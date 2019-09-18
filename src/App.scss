@@ -1,14 +1,33 @@
 .App {
   display: flex;
+  background: #FCFCFC;
   min-height: 100vh;
  flex-flow: column;
   header {
     height: 40vh;
-    background: linear-gradient(180deg, rgba(0, 10, 24, 0.74) 99.99%, rgba(255, 255, 255, 0) 100%), url(technology-785742_1920.jpg);
+    background: linear-gradient(180deg, rgba(0, 10, 24, 0.74) 99.99%, rgba(255, 255, 255, 0) 100%), url(./images/tech.jpg);
+    background-size: cover;
+   nav {
+     display: flex;
+    padding: 1em 2em;
+    span {
+      color: rgb(247, 247, 247);
+      font-family: 'Aclonica', sans-serif;
+      font-size: 0.65em;
+    }
+   }
+    .container{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
  }
 
  main {
    flex-grow: 1;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
  }
 }
 
@@ -27,4 +46,15 @@ button, input {
 body {
   margin: 0;
   padding: 0;
+}
+
+body ::-webkit-scrollbar {
+  background: transparent;
+  border-radius: 0;
+  width: 5px !important;
+}
+body ::-webkit-scrollbar-track {
+  background: rgba(153, 153, 153, 0.1) !important;
+  border-radius: 0;
+  width: 5px;
 }
