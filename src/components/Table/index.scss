@@ -2,6 +2,7 @@
   max-width: 450px;
   min-width: 250px;
   width: 48%;
+  margin: 2em;
   h2 {
     color: rgba(0, 0, 0, 0.705);
     font-size: 1em;
@@ -42,7 +43,17 @@
     }
     .row-container {
       overflow-y: scroll;
-      max-height: 328px;
+      height: 328px;
+      .loader {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          height: 5em;
+          width: 5em;
+        }
+      }
     }
   }
 }

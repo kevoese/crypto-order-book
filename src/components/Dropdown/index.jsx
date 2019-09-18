@@ -4,46 +4,27 @@ import './index.scss';
 import 'semantic-ui-css/semantic.min.css';
 
 
-const Dropdown = () => {
-  const friendOptions = [
+const Dropdown = ({currencyPair, setSelectValue, loading}) => {
+  const data = !loading ? currencyPair.map((element) => (
     {
-      key: 'Jenny Hess',
-      text: 'Jenny Hess',
-      value: 'Jenny Hess',
-    },
-    {
-      key: 'Elliot Fu',
-      text: 'Elliot Fu',
-      value: 'Elliot Fu',
-    },
-    {
-      key: 'Stevie Feliciano',
-      text: 'Stevie Feliciano',
-      value: 'Stevie Feliciano',
-    },
-    {
-      key: 'Christian',
-      text: 'Christian',
-      value: 'Christian',
-    },
-    {
-      key: 'Matt',
-      text: 'Matt',
-      value: 'Matt',
-    },
-    {
-      key: 'Justen Kitsune',
-      text: 'Justen Kitsune',
-      value: 'Justen Kitsune',
-    },
-  ];
+      key: element.name,
+      text: element.description,
+      value: element.name,
+    }
+  )) : [ {
+    key: 'fetching',
+    text: 'Fetching',
+    value: 'fetching',
+  }];
+ 
   return (
     <div className="dropdown">
     <DropdownComponent
-    placeholder='Select Friend'
+    placeholder={loading ? 'Fetching...' : currencyPair[0].description }
     fluid
     selection
-    options={friendOptions}
+    onChange={(e, data) => setSelectValue(data.value)}
+    options={data}
   />
     </div>
   )
