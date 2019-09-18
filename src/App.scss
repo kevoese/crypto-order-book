@@ -4,7 +4,21 @@
  flex-flow: column;
   header {
     height: 40vh;
-    background: linear-gradient(180deg, rgba(0, 10, 24, 0.74) 99.99%, rgba(255, 255, 255, 0) 100%), url(technology-785742_1920.jpg);
+    background: linear-gradient(180deg, rgba(0, 10, 24, 0.74) 99.99%, rgba(255, 255, 255, 0) 100%), url(./images/tech.jpg);
+    background-size: cover;
+   nav {
+     display: flex;
+    padding: 1em 2em;
+    span {
+      color: rgb(247, 247, 247);
+      font-family: 'Aclonica', sans-serif;
+      font-size: 0.65em;
+    }
+   }
+    .container{
+      display: flex;
+      justify-content: space-around;
+    }
  }
 
  main {

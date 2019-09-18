@@ -1,0 +1,50 @@
+.top-record {
+  background: #000613;
+  box-shadow: 0px 4px 30px rgba(31, 107, 255, 0.2);
+  border-radius: 10px;
+  max-width: 400px;
+  width: 40%;
+  min-width: 300px;
+  height: 15em;
+  padding: 0.5em 1em;
+  h1 {
+    color: white;
+    font-family: 'Aclonica', sans-serif;
+    font-size: 0.8em;
+    text-align: center;
+  }
+  .head {
+    display: grid;
+    grid-template-columns: 20% 40% 40%;
+    padding: 0;
+    li {
+      color: white;
+      height: 2em;
+      text-align: center;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .header {
+    font-size: 12px;
+  }
+  .top-record-row {
+    li {
+      font-size: 1.9em;
+    }
+    .type{
+      font-family: 'Aclonica', sans-serif;
+      font-size: 0.65em;
+      height: 100%;
+      text-transform: uppercase;
+    }
+    .ask {
+      color: green;
+    }
+    .bids{
+      color: #DD8501;
+    }
+  }
+}
