@@ -5,7 +5,6 @@ import loader from '../../images/loader.gif';
 
 const Table = ({ name, dataObj, selectValue}) => {
   const rowList = !dataObj ? <div className="loader"><img src={loader} alt="loading.."/></div> : dataObj.map((element, index) => <TableRow key={index} data={element} index={index} />);
- console.log(selectValue);
   const exchangeType = selectValue.split('-')[0].split('/');
   return (
     <div className="table">
