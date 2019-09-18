@@ -1,5 +1,5 @@
 import axios from 'axios';
-const axiosCall = async ({ url, data,  method, }) => {
+export const axiosCall = async ({ url, data,  method, }) => {
   const result = await axios({
     url,
     method: method || 'GET',
@@ -12,4 +12,19 @@ const axiosCall = async ({ url, data,  method, }) => {
 
   return result.data;
 };
-export default axiosCall;
+
+export const unsubscribe = ({webSocket, currencyPair}) => {
+  webSocket.send(JSON.stringify({event: "bts:unsubscribe", data: {channel: `order_book_${currencyPair.split('-')[1]}`}}))
+  webSocket.close();
+};
+
+export const subscribe = ({ setWebSocket, setData, currencyPair}) => {
+  const webSocket = new WebSocket('wss://ws.bitstamp.net/');
+  webSocket.onopen = () => {
+    webSocket.send(JSON.stringify({ event: `bts:subscribe`, data: {channel: `order_book_${currencyPair.split('-')[1]}`}}))
+    setWebSocket(webSocket);
+  }
+  webSocket.onmessage = (data) => {
+   setData(JSON.parse(data.data));
+  }
+}

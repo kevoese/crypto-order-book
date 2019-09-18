@@ -4,7 +4,7 @@
   min-height: 100vh;
  flex-flow: column;
   header {
-    height: 40vh;
+    min-height: 40vh;
     background: linear-gradient(180deg, rgba(0, 10, 24, 0.74) 99.99%, rgba(255, 255, 255, 0) 100%), url(./images/tech.jpg);
     background-size: cover;
    nav {
@@ -20,12 +20,14 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
+      flex-wrap: wrap-reverse;
     }
  }
 
  main {
    flex-grow: 1;
    display: flex;
+   flex-wrap: wrap;
    justify-content: space-around;
    align-items: center;
  }
