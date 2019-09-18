@@ -1,0 +1,22 @@
+.dropdown {
+  width: 85%;
+  max-width: 400px;
+  font-size: 1.2em;
+  font-family: 'Aclonica', sans-serif;
+  color: #1F6BFF !important;
+  .ui.selection.visible.dropdown>.text:not(.default){
+    color: #1F6BFF !important;
+  }
+  // span {
+  //   color: rgba(31, 106, 255, 0.705) !important;
+  // }
+  .ui.dropdown:not(.button)>.default.text {
+    color: rgba(31, 106, 255, 0.9) !important;
+  }
+  .ui.dropdown .menu>.item {
+    color: rgba(31, 106, 255, 0.514) !important;
+  }
+  .ui.dropdown .menu .active.item {
+    color: rgba(31, 106, 255, 0.9) !important;
+  }
+}

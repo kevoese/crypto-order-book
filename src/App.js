@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.scss';
 import TopRecord from './components/TopRecord';
+import Dropdown from './components/Dropdown';
+import Table from './components/Table';
 
 const App = () => {
   return (
@@ -11,10 +13,12 @@ const App = () => {
             </nav>
             <div className="container">
                 <TopRecord />
+                <Dropdown />
             </div>
         </header>
         <main className="main">
-
+            <Table name="ASK" />
+            <Table name="BIDS" />
         </main>
     </div>
   );
