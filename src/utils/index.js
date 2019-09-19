@@ -28,3 +28,7 @@ export const subscribe = ({ setWebSocket, setData, currencyPair}) => {
    setData(JSON.parse(data.data));
   }
 }
+
+export const getCurrencyPairSymbols = (value) => value.split('-')[0];
+
+export const formatNumberString = value => (value ? Number(value).toFixed(3) : 0.000)

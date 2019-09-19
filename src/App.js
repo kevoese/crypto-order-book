@@ -3,12 +3,9 @@ import './App.scss';
 import TopRecord from './components/TopRecord';
 import Dropdown from './components/Dropdown';
 import Table from './components/Table';
-import { axiosCall, subscribe, unsubscribe } from './utils';
+import { axiosCall, subscribe, unsubscribe, getCurrencyPairSymbols } from './utils';
 
 const App = () => {
-  // const getWebSocket = () => {
-  // return new WebSocket('wss://ws.bitstamp.net/');
-  // }
   const [loading, setLoading] = useState(true);
   const [mounting, setMounting] = useState(true)
   const [webSocket, setWebSocket] = useState({});
@@ -27,13 +24,15 @@ const App = () => {
     setMounting(true);
     const response = await axiosCall({ url: 'https://www.bitstamp.net/api/v2/trading-pairs-info/'});
     const currencyPairArr = response.map(element => ({
-      description: element.description.split('/').join(' - '),
-      name: `${element.name}-${element.url_symbol}`,
-    }))
+      description: element.description.split('/').reverse().join(' - '),
+      name: `${element.name.split('/').reverse().join('/')}-${element.url_symbol}`,
+    }));
+    const firstCurrencyPair = currencyPairArr[0].name;
+    
     setCurrencyPair(currencyPairArr);
-    setSelectValue(currencyPairArr[0].name);
+    setSelectValue(firstCurrencyPair);
     setMounting(false);
-    await fetchData(currencyPairArr[0].name);
+    await fetchData(firstCurrencyPair);
   }
 
   const fetchData = async (currencyPair) => {
@@ -54,12 +53,12 @@ const App = () => {
               <span>CRYPTO ORDER BOOK</span>
             </nav>
             <div className="container">
-                <TopRecord currencyPair={selectValue && selectValue.split('-')[0]} asks={data ? data.data.asks: null} bids={data ? data.data.bids: null} />
+                <TopRecord currencyPair={selectValue && getCurrencyPairSymbols(selectValue)} asks={data && data.data.asks && data.data.asks.reverse()} bids={data ? data.data.bids: null} />
                 <Dropdown currencyPair={currencyPair} loading={loading} setSelectValue={handleDropDown} />
             </div>
         </header>
         <main className="main">
-            <Table name="ASKS" dataObj={data && data.data.asks} selectValue={selectValue}/>
+            <Table name="ASKS" dataObj={data && data.data.asks } selectValue={selectValue}/>
             <Table name="BIDS" dataObj={data && data.data.bids} selectValue={selectValue}/>
         </main>
     </div>
